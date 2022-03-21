@@ -8,18 +8,22 @@ import webbrowser
 
 Builder.load_file('frontend.kv')
 
+start_camera_text = "Start Camera"
+
 
 class CameraScreen(Screen):
     def start(self):
         """Starts camera and changes Button text and sets the camera texture to default"""
+        self.ids.camera.opacity = 1
         self.ids.camera.play = True
         self.ids.camera_button.text = 'Stop Camera'
         self.ids.camera.texture = self.ids.camera._camera.texture
 
     def stop(self):
         """Stops camera and changes Button text and sets the camera texture to none"""
+        self.ids.camera.opacity = 0
         self.ids.camera.play = False
-        self.ids.camera_button.text = 'Start Camera'
+        self.ids.camera_button.text = start_camera_text
         self.ids.camera.texture = None
 
     def capture(self):
@@ -60,6 +64,13 @@ class ImageScreen(Screen):
             webbrowser.open(self.url)
         except:
             self.ids.img_link.text = self.link_message
+
+    def back_to_home(self):
+        self.manager.current = 'camera_screen'
+        self.manager.current_screen.ids.camera.opacity = 0
+        self.manager.current_screen.ids.camera.play = False
+        self.manager.current_screen.ids.camera_button.text = start_camera_text
+        self.manager.current_screen.ids.camera.texture = None
 
 
 class RootWidget(ScreenManager):

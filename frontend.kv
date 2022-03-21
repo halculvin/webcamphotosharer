@@ -8,6 +8,7 @@
             resolution: (640, 480)
             play: False
             size_hint_y: 0.8
+            opacity: 0
         Button:
             id: camera_button
             text: 'Start Camera'
@@ -42,8 +43,13 @@
             text: ''
             size_hint_y: 0.1
         GridLayout:
-            cols: 2
+            cols: 3
             size_hint_y: 0.1
+            Button:
+                text: 'Back to Home'
+                on_press: root.back_to_home()
+                background_normal: 'images/normal.png'
+                background_down: 'images/down.png'
             Button:
                 text: 'Copy Link'
                 on_press: root.copy_link()
@@ -57,6 +63,12 @@
 
 
 <Rootwidget>:
+    canvas.before:
+        Color:
+            rgba: (0.3, 0.2, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
     CameraScreen:
         id: camera_screen
         name: 'camera_screen'
