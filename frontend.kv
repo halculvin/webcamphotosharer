@@ -13,11 +13,15 @@
             text: 'Start Camera'
             on_press: root.start() if root.ids.camera.play == False else root.stop()
             size_hint_y: 0.1
+            background_normal: 'images/normal.png'
+            background_down: 'images/down.png'
         Button:
             id:capture_button
             text: 'Capture'
             on_press: root.capture()
             size_hint_y: 0.1
+            background_normal: 'images/normal.png'
+            background_down: 'images/down.png'
 
 <ImageScreen>:
     GridLayout:
@@ -31,6 +35,8 @@
             text: 'Create Sharable Link'
             on_press: root.create_link()
             size_hint_y: 0.1
+            background_normal: 'images/normal.png'
+            background_down: 'images/down.png'
         Label:
             id:img_link
             text: ''
@@ -41,9 +47,13 @@
             Button:
                 text: 'Copy Link'
                 on_press: root.copy_link()
+                background_normal: 'images/normal.png'
+                background_down: 'images/down.png'
             Button:
                 text: 'Open Link'
                 on_press: root.open_link()
+                background_normal: 'images/normal.png'
+                background_down: 'images/down.png'
 
 
 <Rootwidget>:
